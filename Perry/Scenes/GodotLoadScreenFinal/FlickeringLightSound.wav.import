@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/FlickeringLightSound.wav-aa5f4fcce0503ad061f1f50786d354eb.sample"
+
+[deps]
+
+source_file="res://Scenes/GodotLoadScreenFinal/FlickeringLightSound.wav"
+dest_files=[ "res://.import/FlickeringLightSound.wav-aa5f4fcce0503ad061f1f50786d354eb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

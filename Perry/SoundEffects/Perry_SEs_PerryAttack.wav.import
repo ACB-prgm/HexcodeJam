@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Perry_SEs_PerryAttack.wav-2d0e914bb1e5294daaeacc030d3e0f11.sample"
+
+[deps]
+
+source_file="res://SoundEffects/Perry_SEs_PerryAttack.wav"
+dest_files=[ "res://.import/Perry_SEs_PerryAttack.wav-2d0e914bb1e5294daaeacc030d3e0f11.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/BulletSounds Render 1.wav-ac59a94a4e1d211b9757e0f96e5a2c46.sample"
+
+[deps]
+
+source_file="res://SoundEffects/BulletSounds Render 1.wav"
+dest_files=[ "res://.import/BulletSounds Render 1.wav-ac59a94a4e1d211b9757e0f96e5a2c46.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

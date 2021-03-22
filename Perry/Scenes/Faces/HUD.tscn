@@ -1,0 +1,201 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Images/Faces/Faces_lights.png" type="Texture" id=1]
+[ext_resource path="res://Images/Faces/Faces.png" type="Texture" id=2]
+[ext_resource path="res://Font/DS-DIGI.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://Scenes/Faces/HUD.gd" type="Script" id=4]
+[ext_resource path="res://SoundEffects/RETRO HIT (DAMAGE).wav" type="AudioStream" id=5]
+[ext_resource path="res://SoundEffects/Alarm_Clock.wav" type="AudioStream" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "happy"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Faces:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Face_Lights:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Face_Lights:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1.25, 1.1, 1.25, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "neutral"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Face_Lights:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Faces:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Face_Lights:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1.25, 1.1, 1.25, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "scared"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Faces:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Face_Lights:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Face_Lights:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1.35, 1.2, 1.3, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 48
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 48
+font_data = ExtResource( 3 )
+
+[node name="HUD" type="CanvasLayer"]
+follow_viewport_enable = true
+script = ExtResource( 4 )
+
+[node name="Faces" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.75 )
+position = Vector2( 540, 620 )
+texture = ExtResource( 2 )
+hframes = 3
+
+[node name="Face_Lights" type="Sprite" parent="."]
+modulate = Color( 1.25, 1.1, 1.25, 1 )
+position = Vector2( 540, 620 )
+texture = ExtResource( 1 )
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "happy"
+anims/happy = SubResource( 1 )
+anims/neutral = SubResource( 2 )
+anims/scared = SubResource( 3 )
+
+[node name="TimeLabel" type="Label" parent="."]
+modulate = Color( 1.6, 1, 1, 1 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -320.0
+margin_top = 35.0
+margin_right = -178.0
+margin_bottom = 84.0
+grow_horizontal = 0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.72549, 0.176471, 0.176471, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "8:00 PM"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NightLabel" type="Label" parent="."]
+modulate = Color( 1.6, 1, 1, 1 )
+margin_left = 180.0
+margin_top = 35.0
+margin_right = 322.0
+margin_bottom = 84.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.72549, 0.176471, 0.176471, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Night 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthDing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = 5.0
+pitch_scale = 0.9
+bus = "SoundEffects"
+
+[node name="AlarmClock" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+pitch_scale = 3.0
+bus = "SoundEffects"

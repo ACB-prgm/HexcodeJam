@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Perry_SEs_UIHover.wav-cadf12097f544a2904a704047992d2ee.sample"
+
+[deps]
+
+source_file="res://SoundEffects/Perry_SEs_UIHover.wav"
+dest_files=[ "res://.import/Perry_SEs_UIHover.wav-cadf12097f544a2904a704047992d2ee.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

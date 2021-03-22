@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/DOS-88_Flow_State.ogg-563dfe95fe260bdd42519e1af3ec6c77.oggstr"
+
+[deps]
+
+source_file="res://Music/DOS-88_Flow_State.ogg"
+dest_files=[ "res://.import/DOS-88_Flow_State.ogg-563dfe95fe260bdd42519e1af3ec6c77.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

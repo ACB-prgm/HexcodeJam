@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Perry_SEs_Charging.ogg-81c5495a20b6a9f7e00706e28e229f51.oggstr"
+
+[deps]
+
+source_file="res://SoundEffects/Perry_SEs_Charging.ogg"
+dest_files=[ "res://.import/Perry_SEs_Charging.ogg-81c5495a20b6a9f7e00706e28e229f51.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

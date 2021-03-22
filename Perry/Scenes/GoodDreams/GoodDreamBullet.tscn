@@ -1,0 +1,80 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Images/Dreams/DreamPointer.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/GoodDreams/GoodDreamBullet.gd" type="Script" id=2]
+[ext_resource path="res://Images/Dreams/Good_Dreams.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/GoodDreams/GoodDreams.tres" type="Material" id=4]
+[ext_resource path="res://Scenes/Trail.gd" type="Script" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 26.8193
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 52, 50 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 52, 0, 52, 50 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 104, 0, 52, 50 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 156, 0, 52, 50 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="CanvasItemMaterial" id=7]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[node name="GoodDreamBullet" type="Area2D"]
+collision_layer = 64
+collision_mask = 42
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 8.25982, -0.90934 )
+z_index = 1
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+modulate = Color( 1.3, 1.2, 1.3, 1 )
+scale = Vector2( 1.2, 0.8 )
+frames = SubResource( 6 )
+playing = true
+
+[node name="Trail" type="Particles2D" parent="."]
+modulate = Color( 1.3, 1.2, 1.3, 1 )
+material = SubResource( 7 )
+z_index = -1
+amount = 32
+explosiveness = 0.3
+local_coords = false
+process_material = ExtResource( 4 )
+texture = ExtResource( 3 )
+script = ExtResource( 5 )
+
+[node name="DeathTween" type="Tween" parent="."]
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_GoodDreamBullet_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_GoodDreamBullet_body_entered"]
+[connection signal="tween_all_completed" from="DeathTween" to="." method="_on_DeathTween_tween_all_completed"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

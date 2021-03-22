@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Perry_SEs_EnemyHit.wav-0b17440e38b5212748875bd6dd1ce119.sample"
+
+[deps]
+
+source_file="res://SoundEffects/Perry_SEs_EnemyHit.wav"
+dest_files=[ "res://.import/Perry_SEs_EnemyHit.wav-0b17440e38b5212748875bd6dd1ce119.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
