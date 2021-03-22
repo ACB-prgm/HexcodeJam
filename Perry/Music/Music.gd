@@ -7,7 +7,6 @@ onready var titleMusic = $TitleMusic
 onready var inGameMusic_Happy = $InGameMusicHappy
 onready var inGameMusic_Sad = $InGameMusicSad
 
-
 var Music_enabled = true
 var songs_to_stop = []
 var songs_playing = []
@@ -69,13 +68,13 @@ func stop_all_music(fade=true, tween_time=3):
 		songs_playing.erase(song)
 
 
-func get_playing(index=0):
+func get_playing(index=0) -> String:
 	if songs_playing:
 		for track in Tracks:
 			var song = Tracks.get(track).get("song")
 			if  song == songs_playing[index]:
 				return track
-	return null
+	return "null"
 
 
 func _on_StopMusicTween_tween_completed(_object, _key):

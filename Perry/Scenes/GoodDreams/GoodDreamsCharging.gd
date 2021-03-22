@@ -1,6 +1,8 @@
 extends Node2D
 
 
+export var HowToPlay = false
+
 onready var ring1 = $Ring1
 onready var ring2 = $Ring2
 onready var ring3 = $Ring3
@@ -22,6 +24,10 @@ var can_shoot:bool = true
 
 signal good_dream_ended
 
+
+func _ready():
+	if !HowToPlay:
+		$ChargingSound.play()
 
 func _physics_process(_delta):
 	pointing()
@@ -50,21 +56,24 @@ func pointing():
 
 func shooting():
 	if Input.is_action_pressed("ui_attack") and can_shoot:
-		$ShootSound.play()
+		if !HowToPlay:
+			$ShootSound.play()
 		can_shoot = false
 		shootTimer.start()
 		
-		shootTween.interpolate_property(self, "modulate", Color(1.56,1.44,1.56,1.2), Color(1.3, 1.2, 1.3, 1), 
-		0.3, Tween.TRANS_BACK, Tween.EASE_OUT)
+		if !HowToPlay:
+			shootTween.interpolate_property(self, "modulate", Color(1.56,1.44,1.56,1.2), Color(1.3, 1.2, 1.3, 1), 
+			0.3, Tween.TRANS_BACK, Tween.EASE_OUT)
 		shootTween.interpolate_property(pointer, "scale", 
 		Vector2(1.5, 1.5), Vector2(1,1), 
 		0.3, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
 		shootTween.start()
 		
-		var bullet = dreamBullet.instance()
-		bullet.global_position = pointer.global_position
-		bullet.rotation = pointer.rotation
-		get_parent().add_child(bullet)
+		if !HowToPlay:
+			var bullet = dreamBullet.instance()
+			bullet.global_position = pointer.global_position
+			bullet.rotation = pointer.rotation
+			get_parent().add_child(bullet)
 
 
 func _on_ShootTimer_timeout():
@@ -88,4 +97,5 @@ func _on_DeathTween_tween_all_completed():
 
 
 func _on_DurationTimer_timeout():
-	die()
+	if !HowToPlay:
+		die()

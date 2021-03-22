@@ -14,10 +14,15 @@ func _ready():
 		perr.global_position = Globals.player_death_pos
 		$DeadPerryLayer.add_child(perr)
 	
-	Music._in("TITLE")
+	if Music.get_playing() != "TITLE":
+		Music._in("TITLE")
 	
 
 
 func _on_PlayButton_TextButton_Pressed():
 	Transitioner._out(get_tree(), "res://Scenes/PlayLevel/Level.tscn")
 	Music._out("TITLE")
+
+
+func _on_HowToPlayButton_TextButton_Pressed():
+	Transitioner._out(get_tree(), "res://Scenes/HowToPlay/HowToPlay.tscn")

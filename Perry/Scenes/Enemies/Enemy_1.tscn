@@ -434,6 +434,7 @@ health = 3
 visible = false
 position = Vector2( -17.3134, -8.65672 )
 shape = SubResource( 1 )
+disabled = true
 
 [node name="AnimatedSkeleton" type="Node2D" parent="."]
 

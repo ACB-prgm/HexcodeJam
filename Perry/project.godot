@@ -24,7 +24,7 @@ config/name="Perry"
 run/main_scene="res://Scenes/GodotLoadScreenFinal/GodotStartupScreen.tscn"
 boot_splash/image="res://Images/Background/Background_Full.png"
 boot_splash/bg_color=Color( 0.160784, 0.156863, 0.192157, 1 )
-config/icon="res://icon.png"
+config/icon="res://Images/Icon.png"
 
 [autoload]
 

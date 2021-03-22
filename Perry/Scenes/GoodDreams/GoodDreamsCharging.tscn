@@ -145,6 +145,7 @@ collision_layer = 64
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource( 11 )
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="."]
@@ -157,7 +158,6 @@ bus = "SoundEffects"
 stream = ExtResource( 7 )
 volume_db = -20.0
 pitch_scale = 0.8
-autoplay = true
 bus = "SoundEffects"
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

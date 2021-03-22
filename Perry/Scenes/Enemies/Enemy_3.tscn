@@ -7,7 +7,8 @@
 [ext_resource path="res://Scenes/Enemies/EnemyDeathSound.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
-height = 102.22
+radius = 47.6927
+height = 81.0974
 
 [sub_resource type="Animation" id=2]
 resource_name = "attack"
@@ -399,12 +400,11 @@ radius = 45.232
 
 [node name="Enemy_3" type="KinematicBody2D"]
 collision_layer = 32
-collision_mask = 2
+collision_mask = 34
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( -27.0957, 38.9153 )
+position = Vector2( -40, 9 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
@@ -495,3 +495,4 @@ disabled = true
 [connection signal="animation_finished" from="AnimatedSkeleton/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_DetectionArea_body_entered"]
+[connection signal="tween_all_completed" from="HitTween" to="." method="_on_HitTween_tween_all_completed"]

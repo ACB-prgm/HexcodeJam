@@ -34,6 +34,7 @@ func next_level():
 	$AlarmClock.play(7)
 	yield(get_tree().create_timer(1.0), "timeout")
 	num_enemies = 0
+	num_active_enemies = 0
 	night += 1
 	nightLabel.set_text("night %s" % night)
 	
@@ -71,28 +72,26 @@ func create_enemy_stack():
 
 
 func spawn_enemies():
+	var temp_stack = []
+	
 	for enemy in enemies_stack:
 		if num_active_enemies >= SPAWN_LIMIT:
 			break
+		else:
+			var enemy_instance = EnemyWaveInfo.enemies.get(enemy).instance()
+			enemy_instance.global_position = random_spawn_loc(enemy)
+			enemy_instance.connect("enemy_died", self, "_on_enemy_died")
+			get_parent().add_child(enemy_instance)
+			
+			temp_stack.append(enemy)
+			num_active_enemies += 1
 	
-		var enemy_instance = EnemyWaveInfo.enemies.get(enemy).instance()
-		enemy_instance.global_position = random_spawn_loc(enemy)
-		enemy_instance.connect("enemy_died", self, "_on_enemy_died")
-		get_parent().add_child(enemy_instance)
-		
+	for enemy in temp_stack:
 		enemies_stack.erase(enemy)
-		num_active_enemies += 1
+
 
 
 func random_spawn_loc(enemy_type:int = 1) -> Vector2: # randomly generates a Vector2 outside the viewport
-	var Y = 0
-	if enemy_type == 1:
-		Y = rand_range(70, 83)
-	elif enemy_type == 3:
-		Y = 50
-	else:
-		Y = rand_range(95, 110)
-	
 	var X = 0
 	var flip = rand_range(0.0, 10.0)
 	if flip >= 5.0: # RIGHT SIDE
@@ -100,13 +99,25 @@ func random_spawn_loc(enemy_type:int = 1) -> Vector2: # randomly generates a Vec
 	else: # LEFT SIDE
 		X = 0 - rand_range(40, 200)
 	
+	var Y = 0
+	if enemy_type == 1:
+		Y = rand_range(70, 83)
+	elif enemy_type == 3:
+		Y = -50
+		X = rand_range(-50, 1130)
+	else:
+		Y = rand_range(95, 110)
+	
 	return Vector2(X, Y)
 
 
 func _on_enemy_died():
 	num_enemies -= 1
 	num_active_enemies -= 1
-	spawn_enemies()
+	if num_active_enemies <= int(rand_range(5, 9)):
+		spawn_enemies()
+	elif num_active_enemies <= 5:
+		spawn_enemies()
 	
 	set_time()
 	

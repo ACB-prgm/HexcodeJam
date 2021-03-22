@@ -193,6 +193,13 @@ func _on_Hitbox_area_entered(area):
 		hitTween.start()
 
 
+func _on_HitTween_tween_all_completed():
+	if global_position.x > 990:
+		global_position.x = 990
+	if global_position.x < 90:
+		global_position.x = 90
+
+
 func hit():
 	if frame >= HIT_FRAME_LIMIT:
 		frame = 0

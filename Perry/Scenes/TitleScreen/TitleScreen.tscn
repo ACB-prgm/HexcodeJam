@@ -63,9 +63,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -512.0
-margin_top = 21.2767
+margin_top = 25.2767
 margin_right = 512.0
-margin_bottom = 85.2767
+margin_bottom = 89.2767
 focus_mode = 2
 mouse_filter = 0
 size_flags_vertical = 1
@@ -111,3 +111,4 @@ text = "How To Play"
 layer = 2
 
 [connection signal="TextButton_Pressed" from="Control/VBoxContainer/PlayButton" to="." method="_on_PlayButton_TextButton_Pressed"]
+[connection signal="TextButton_Pressed" from="Control/VBoxContainer/HowToPlayButton" to="." method="_on_HowToPlayButton_TextButton_Pressed"]

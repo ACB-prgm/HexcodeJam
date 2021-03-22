@@ -473,6 +473,7 @@ shake_amt = 100
 visible = false
 position = Vector2( 0, -12.5164 )
 shape = SubResource( 1 )
+disabled = true
 
 [node name="AnimatedSkeleton" type="Node2D" parent="."]
 
