@@ -8,12 +8,16 @@ var GodotLoadScreen = preload("res://Scenes/GodotLoadScreenFinal/GodotLogoPartic
 var GoodDreams = preload("res://Scenes/GoodDreams/GoodDreams.tres")
 var GoodDreamsCharging = preload("res://Scenes/GoodDreams/GoodDreamsCharging.tres")
 var EnemyProjectile = preload("res://Scenes/Enemies/Enemy_Projectile.tres")
+var DeathScene = preload("res://ParticlesCache/EnemyDeath.tres")
+var DeathSceneSkull = preload("res://ParticlesCache/EnemyDeath_Skull.tres")
 
 var materials = [
 	GodotLoadScreen,
 	GoodDreams,
 	GoodDreamsCharging,
-	EnemyProjectile
+	EnemyProjectile,
+	DeathScene,
+	DeathSceneSkull
 ]
 
 

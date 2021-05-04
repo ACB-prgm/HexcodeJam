@@ -19,6 +19,7 @@ onready var deathSound = $DeathSound
 onready var anim_PlaybackSpeed = animPlayer.playback_speed
 
 var projectile_spawner = preload("res://Scenes/Enemies/Enemy_Projectile_spawner.tscn")
+var death_TSCN = preload("res://Scenes/Enemies/EnemyDeath/EnemyDeath.tscn")
 var velocity = Vector2.ZERO
 var direction = Vector2.RIGHT
 var traveling_to_screen = true
@@ -124,6 +125,7 @@ func attacking():
 
 # DEATH FUNCTIONS ——————————————————————————————————————————————————————————————
 func _on_Hitbox_area_entered(area):
+	_Camera.shake(30, .4, 120)
 	frame = 0
 	if state != PAUSED:
 		last_state = state
@@ -145,6 +147,10 @@ func _on_Hitbox_area_entered(area):
 func die():
 	if !dead:
 		dead = true
+		
+		var death_ins = death_TSCN.instance()
+		death_ins.global_position = global_position
+		get_parent().add_child(death_ins)
 		
 		call_deferred("remove_child", deathSound)
 		get_parent().call_deferred("add_child", deathSound)

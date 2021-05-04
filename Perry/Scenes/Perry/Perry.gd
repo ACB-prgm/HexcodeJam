@@ -41,8 +41,10 @@ var input_vector: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2.ZERO
 var health = 5
 var goodDreamCharging = preload("res://Scenes/GoodDreams/GoodDreamsCharging.tscn")
+var dashLine = preload("res://Scenes/Perry/DashLine.tscn")
 
 signal player_hit(health)
+signal attack_finished
 
 enum {
 	NORMAL,
@@ -157,6 +159,12 @@ func attack():
 			var dir_to_target = global_position.direction_to(target.global_position)
 			velocity = (dir_to_target * 750)
 			
+			var dash_INS = dashLine.instance()
+# warning-ignore:return_value_discarded
+			connect("attack_finished", dash_INS, "_on_attack_finished")
+			dash_INS.global_position = global_position
+			get_parent().add_child(dash_INS)
+			
 			animSkeleton.scale.x = 1
 			if dir_to_target.x >= 0:
 				animSkeleton.scale.y = -1
@@ -176,6 +184,8 @@ func _on_AttackTimer_timeout():
 	attackTween.interpolate_property(self, "rotation", rotation, 0, 
 	0.1, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	attackTween.start()
+	
+	emit_signal("attack_finished")
 
 
 # ANIMATIONS ———————————————————————————————————————————————————————————————————
@@ -249,6 +259,7 @@ func parry():
 			parrySound.play()
 			animState.travel("Parry")
 			parryArea_col.disabled = false
+			_Camera.shake(30, .4, 120)
 			movement_paused = true
 			state = PARRY
 

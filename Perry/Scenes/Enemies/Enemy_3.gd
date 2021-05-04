@@ -18,6 +18,7 @@ onready var hitSound = $HitSound
 onready var deathSound = $DeathSound
 onready var player = Globals.player
 
+var death_TSCN = preload("res://Scenes/Enemies/EnemyDeath/EnemyDeath.tscn")
 var health = 5
 var frame = 0
 var flee_target_x = 0
@@ -25,6 +26,7 @@ var idle_frame_limit = 0
 var charging = false
 var cooling_down = false
 var found_cool_down_pos = false
+var dead = false
 var cool_down_pos: Vector2 = Vector2.ZERO
 var last_player_pos: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2.ZERO
@@ -164,6 +166,7 @@ func attack():
 # HIT FUNCTIONS —————————————————————————————————————————————————————————————
 func _on_Hitbox_area_entered(area):
 	frame = 0
+	_Camera.shake(30, .4, 120)
 	hitSound.pitch_scale = 1 + rand_range(0.05, 0.1)
 	hitSound.play()
 	
@@ -208,10 +211,16 @@ func hit():
 
 
 func die():
-	call_deferred("remove_child", deathSound)
-	get_parent().call_deferred("add_child", deathSound)
-	deathSound.play()
-	
-	_Camera.shake(200, 0.4, 200)
-	emit_signal("enemy_died")
-	queue_free()
+	if !dead:
+		dead = true
+		var death_ins = death_TSCN.instance()
+		death_ins.global_position = global_position
+		get_parent().add_child(death_ins)
+		
+		call_deferred("remove_child", deathSound)
+		get_parent().call_deferred("add_child", deathSound)
+		deathSound.play()
+		
+		_Camera.shake(200, 0.4, 200)
+		emit_signal("enemy_died")
+		queue_free()

@@ -31,7 +31,7 @@ func _on_Enemy_Projectile_area_entered(area):
 			velocity *= -1
 			var shape = CircleShape2D.new()
 			shape.set_radius(25)
-			$CollisionShape2D.set_shape(shape)
+			$CollisionShape2D.set_deferred("shape", shape)
 			
 	elif parried and coll_layer in [32, 128]:
 		die()

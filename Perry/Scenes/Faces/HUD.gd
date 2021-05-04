@@ -10,9 +10,11 @@ const TOTAL_MINUTES = 659.0
 onready var animPlayer = $AnimationPlayer
 onready var timeLabel = $TimeLabel
 onready var nightLabel = $NightLabel
+onready var highScoreLabel = $HighScoreLabel
 
 var player_dead:bool = false
 var night = 0
+var highscore: int
 var minutes = EIGHT_HOURS
 var am_pm = "P"
 var add_amount = 0
@@ -26,6 +28,8 @@ var enemies_stack = []
 func _ready():
 	Music._in("GAME_HAPPY")
 	randomize()
+	highscore = Globals.highscore
+	highScoreLabel.set_text("highscore\n %s" % [highscore])
 	yield(get_tree().create_timer(1.0), "timeout")
 	next_level()
 
@@ -38,6 +42,11 @@ func next_level():
 	night += 1
 	nightLabel.set_text("night %s" % night)
 	
+	if night > highscore:
+		highscore = night
+		Globals.highscore = night
+	highScoreLabel.set_text("highscore\n %s" % [highscore])
+	
 	yield(get_tree().create_timer(1.0), "timeout")
 	create_enemy_stack()
 	spawn_enemies()
@@ -45,7 +54,7 @@ func next_level():
 	
 	Globals.player.health = 5
 	animPlayer.play("happy")
-	
+
 
 
 func create_enemy_stack():
@@ -160,5 +169,6 @@ func _on_player_hit(player_health):
 		animPlayer.play("scared")
 	elif player_health <= 0 and !player_dead:
 		player_dead = true
+		Globals.save_data()
 		Music.stop_all_music()
 		Transitioner._out(get_tree(), "res://Scenes/TitleScreen/TitleScreen.tscn")
