@@ -1,31 +1,31 @@
 [gd_resource type="ParticlesMaterial" load_steps=9 format=2]
 
-[sub_resource type="Curve" id=2]
+[sub_resource type="Curve" id=1]
 max_value = 2.0
 _data = [ Vector2( 0, 0 ), 0.0, 0.346463, 0, 0, Vector2( 1, 1.33383 ), 1.89715, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=3]
-curve = SubResource( 2 )
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0, 0.504792, 0.984026 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 4 )
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
 
-[sub_resource type="Curve" id=6]
+[sub_resource type="Curve" id=5]
 max_value = 100.0
 _data = [ Vector2( 0, 52.473 ), 0.0, 35.978, 0, 0, Vector2( 0.512465, 98.8694 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=7]
-curve = SubResource( 6 )
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
 
-[sub_resource type="Curve" id=8]
+[sub_resource type="Curve" id=7]
 _data = [ Vector2( 0, 0.563063 ), 0.0, 0.0, 0, 0, Vector2( 0.470914, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=9]
-curve = SubResource( 8 )
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 7 )
 
 [resource]
 emission_shape = 1
@@ -39,10 +39,10 @@ initial_velocity_random = 0.6
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 tangential_accel = 100.0
-damping_curve = SubResource( 7 )
+damping_curve = SubResource( 6 )
 scale = 2.0
 scale_random = 1.0
-scale_curve = SubResource( 9 )
-color_ramp = SubResource( 5 )
+scale_curve = SubResource( 8 )
+color_ramp = SubResource( 4 )
 anim_speed_random = 0.7
-anim_speed_curve = SubResource( 3 )
+anim_speed_curve = SubResource( 2 )
